@@ -18,41 +18,27 @@ pineCost = 0
 #If the customer wants drawers they are $30 each
 drawerCost = 30
 
-
 #input section
-#Enter order number:
-ordernumber = input("Enter order number: ")
-#Enter length of desk (inches):
 length = float(input("Enter length of desk (inches): "))
-#Enter width of desk (inches):
 width = float(input("Enter width of desk (inches): "))
-#Enter type of wood (mahogany, oak, pine):
-woodType = str(input("Enter type of wood (mahogany, oak, pine):"))
-#Enter number of drawers:
+woodType = str(input("Enter type of wood (1. mahogany, 2. oak, 3. pine):"))
 drawers = int(input("Enter number of drawers: "))
-
 
 #math time
 #set total as minimum amount it will possibly be
 total = minimum
-surface = length * width
 #if the surface (length * width) is over 750 square inches, add $50
-if surface > largeSurfaceSize:
+if length * width > largeSurfaceSize:
     total += largeSurfaceCost
 #if the wood is "mahogany" add $150; for "oak" add $125. No charge is added for "pine"
-if woodType.lower() == "mahogany":
+if woodType == 1:
     total += mahoganyCost
 
-if woodType.lower() == "oak":
+if woodType == 2:
     total += oakCost
 
-if woodType.lower() == "pine":
-    total += pineCost
 #for every drawer in the desk, there is an additional $30 charge
-totalDrawerCost = drawers * drawerCost
-total += totalDrawerCost
-
+total += drawers * drawerCost
 
 #output
-#total cost
 print("Total cost is : ${0:.2f}".format(total))
